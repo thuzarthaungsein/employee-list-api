@@ -24,7 +24,6 @@ composer install
 
 ### DATABASE
 
-- In Browser, go to localhost/phpmyadmin
 - Create database with collation ```utf8mb4_unicode_ci```
 - Clone .env.example to .env file and edit connection info
 - Run this command for migrate and seed ```php artisan migrate --seed```
