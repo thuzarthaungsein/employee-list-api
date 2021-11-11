@@ -101,6 +101,33 @@ return [
     //
     'schemas' => [
         'default' => [
+            'query' => [                
+                'login' => App\GraphQL\Queries\UserLoginQuery::class,
+
+                // moved to secret
+                // 'employee' => App\GraphQL\Queries\EmployeeQuery::class,
+                // 'employees' => App\GraphQL\Queries\EmployeesQuery::class,
+            ],
+            'mutation' => [
+                // moved to secret
+
+                // Create an employee
+                // 'createEmployee' => App\GraphQL\Mutations\CreateEmployeeMutation::class,
+
+                // Update Employee
+                // 'updateEmployee' => App\GraphQL\Mutations\UpdateEmployeeMutation::class,
+
+                // delete an Employee
+                // 'deleteEmployee' => App\GraphQL\Mutations\DeleteEmployeeMutation::class,
+            ],
+            'types' => [
+                'User' => App\GraphQL\Types\UserType::class,
+                'Employee' => App\GraphQL\Types\EmployeeType::class,
+            ],
+            'middleware' => [],
+            'method' => ['get', 'post'],
+        ],
+        'user' => [
             'query' => [
                 'employee' => App\GraphQL\Queries\EmployeeQuery::class,
                 'employees' => App\GraphQL\Queries\EmployeesQuery::class,
@@ -115,11 +142,7 @@ return [
                 // delete an Employee
                 'deleteEmployee' => App\GraphQL\Mutations\DeleteEmployeeMutation::class,
             ],
-            'types' => [
-                'Employee' => App\GraphQL\Types\EmployeeType::class,
-            ],
-            'middleware' => [],
-            'method' => ['get', 'post'],
+            'middleware' => ['auth:api'],
         ],
     ],
 
@@ -133,6 +156,7 @@ return [
     // ]
     //
     'types' => [
+        'User' => App\GraphQL\Types\UserType::class,
         'Employee' => App\GraphQL\Types\EmployeeType::class,
         // ExampleType::class,
         // ExampleRelationType::class,
